@@ -2,6 +2,7 @@
 import "./globals.css";
 import "./article.css";
 import type { Metadata } from "next";
+import Script from "next/script";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -17,6 +18,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* ✅ Google AdSense verification */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5779161570598228"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </head>
+
       <body>
         <Navbar />
         {children}
