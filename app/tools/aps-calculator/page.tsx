@@ -175,7 +175,8 @@ function normalize(s: string) {
     .toLowerCase()
     .replace(/&/g, "and")
     .replace(/[^a-z0-9\s]/g, "")
-    .replace(/\s+/g, " ");
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function isLifeOrientation(name: string) {
@@ -233,7 +234,6 @@ export default function APSCalculatorPage() {
     { id: uid(), name: "Subject 7", mark: "" },
   ]);
 
-  // Apply preset changes
   useEffect(() => {
     const p = UNI_PRESETS[preset];
     if (!p) return;
@@ -356,12 +356,37 @@ export default function APSCalculatorPage() {
         <div className="card">
           <h1 style={{ marginBottom: 10 }}>APS Calculator</h1>
 
-          <p style={{ color: "var(--text-muted)", maxWidth: 820, marginTop: 0 }}>
-            Enter your marks to estimate APS using a common points table. Universities can
-            calculate APS differently — always confirm official requirements.
+          <p className="lede" style={{ maxWidth: 860 }}>
+            Estimate your APS using a common points table used by many South African
+            institutions. This tool is meant to help you plan, compare options, and
+            understand your results better.
           </p>
 
-          {/* Preset */}
+          <div className="callout">
+            <strong>Important:</strong> APS rules differ between universities and
+            programmes. Always confirm the official requirements of the institution
+            you want to apply to.
+          </div>
+
+          <h2 style={{ fontSize: 22, marginTop: 18 }}>Before you use this calculator</h2>
+          <p>
+            APS stands for <strong>Admission Point Score</strong>. Universities use
+            APS to rank or screen applicants, but they do not all calculate it in
+            exactly the same way.
+          </p>
+          <p>
+            This calculator helps you estimate your score using a common points
+            system. It is useful for getting a quick picture of where you may stand,
+            but it does not replace official university admission criteria.
+          </p>
+
+          <ul>
+            <li>Some universities count the best 6 subjects.</li>
+            <li>Some include Life Orientation and some do not.</li>
+            <li>Some degrees require specific subjects, not just a high APS.</li>
+            <li>Mathematics and Mathematical Literacy are not treated the same.</li>
+          </ul>
+
           <div style={{ marginTop: 12 }}>
             <div style={{ fontWeight: 800, marginBottom: 8 }}>University preset</div>
 
@@ -399,7 +424,6 @@ export default function APSCalculatorPage() {
             </div>
           </div>
 
-          {/* Math choice */}
           <div style={{ marginTop: 14 }}>
             <div style={{ fontWeight: 800, marginBottom: 8 }}>Math subject</div>
 
@@ -426,12 +450,11 @@ export default function APSCalculatorPage() {
             </div>
 
             <p style={{ fontSize: 14, marginTop: 8, color: "var(--text-muted)" }}>
-              ⚠️ Many degrees (e.g. Engineering, Medicine) usually require{" "}
-              <strong>Mathematics</strong>, not Math Lit.
+              Many competitive degrees usually require <strong>Mathematics</strong>,
+              not Mathematical Literacy.
             </p>
           </div>
 
-          {/* Options */}
           <div
             style={{
               marginTop: 12,
@@ -469,7 +492,6 @@ export default function APSCalculatorPage() {
             </label>
           </div>
 
-          {/* Degree requirement hints */}
           <div className="card" style={{ marginTop: 16, padding: 14 }}>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
               <h2 style={{ margin: 0, fontSize: 18 }}>Degree requirements (smart hints)</h2>
@@ -490,7 +512,9 @@ export default function APSCalculatorPage() {
             </div>
 
             <p style={{ marginTop: 10, color: "var(--text-muted)" }}>
-              These hints update based on the subject names you type (e.g., “Physical Sciences”).
+              These hints update based on the subject names you type, such as
+              “Physical Sciences”, “Life Sciences”, “Home Language”, and
+              “First Additional Language”.
             </p>
 
             <ul style={{ marginTop: 10 }}>
@@ -570,11 +594,15 @@ export default function APSCalculatorPage() {
         </div>
       </section>
 
-      {/* Inputs */}
       <section style={{ marginTop: 18 }}>
         <h2 style={{ marginBottom: 10 }}>Enter your marks</h2>
 
         <div className="card" style={{ padding: 12 }}>
+          <p style={{ marginTop: 0, color: "var(--text-muted)" }}>
+            Enter your seven matric subjects and percentages below. The calculator
+            will convert your marks into APS points and use your selected settings.
+          </p>
+
           <div style={{ display: "grid", gap: 10 }}>
             {computed.parsed.map((s) => (
               <div
@@ -621,14 +649,11 @@ export default function APSCalculatorPage() {
         </div>
       </section>
 
-      {/* Result */}
       <section style={{ marginTop: 18 }}>
         <h2 style={{ marginBottom: 10 }}>Your estimated APS</h2>
 
         <div className="card">
-          <div style={{ fontSize: 42, fontWeight: 900, marginBottom: 6 }}>
-            {computed.total}
-          </div>
+          <div style={{ fontSize: 42, fontWeight: 900, marginBottom: 6 }}>{computed.total}</div>
 
           <div style={{ color: "var(--text-muted)", lineHeight: 1.6 }}>
             Using your best <strong>{countSubjects}</strong> subjects
@@ -667,20 +692,75 @@ export default function APSCalculatorPage() {
         </div>
       </section>
 
-      {/* Next steps CTA */}
+      <section style={{ marginTop: 18 }}>
+        <div className="card card--soft">
+          <h2 style={{ marginTop: 0 }}>How APS usually works</h2>
+          <p>
+            APS usually turns each matric mark into a point value. A common table is:
+          </p>
+
+          <ul>
+            <li>80–100% = 7 points</li>
+            <li>70–79% = 6 points</li>
+            <li>60–69% = 5 points</li>
+            <li>50–59% = 4 points</li>
+            <li>40–49% = 3 points</li>
+            <li>30–39% = 2 points</li>
+            <li>0–29% = 1 point</li>
+          </ul>
+
+          <p>
+            Some institutions count the best 6 subjects. Others may handle Life
+            Orientation differently. That is why this calculator is an estimate, not
+            a final admission decision.
+          </p>
+        </div>
+      </section>
+
       <section style={{ marginTop: 18 }}>
         <div className="card">
-          <h2 style={{ marginTop: 0 }}>Next steps</h2>
+          <h2 style={{ marginTop: 0 }}>Common mistakes students make</h2>
+          <ul>
+            <li>Assuming all universities calculate APS in exactly the same way.</li>
+            <li>Thinking a high APS is enough without the right subjects.</li>
+            <li>Confusing Mathematics with Mathematical Literacy.</li>
+            <li>Forgetting that some programmes require Physical Sciences or Life Sciences.</li>
+            <li>Ignoring official university faculty requirements.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section style={{ marginTop: 18 }}>
+        <div className="card">
+          <h2 style={{ marginTop: 0 }}>Useful next steps</h2>
           <p style={{ color: "var(--text-muted)", marginTop: 6, maxWidth: 820 }}>
-            Now that you have an estimate, here are the best places to go next.
+            Once you have your estimate, use these guides to make smarter decisions.
           </p>
 
           <div style={{ display: "grid", gap: 12, marginTop: 12 }}>
-            <Link href="/matric" style={{ textDecoration: "none", display: "block" }}>
+            <Link href="/matric/how-do-aps-points-work" style={{ textDecoration: "none", display: "block" }}>
               <div className="card" style={{ padding: 14, borderRadius: 14, cursor: "pointer" }}>
-                <div style={{ fontWeight: 900, marginBottom: 6 }}>Read Matric guides</div>
+                <div style={{ fontWeight: 900, marginBottom: 6 }}>Learn how APS points work</div>
                 <div style={{ color: "var(--text-muted)" }}>
-                  Pass types, APS, diploma vs degree, rewrite & upgrade options.
+                  Understand how marks convert into points and what universities usually count.
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/matric/what-can-i-study-with-my-aps" style={{ textDecoration: "none", display: "block" }}>
+              <div className="card" style={{ padding: 14, borderRadius: 14, cursor: "pointer" }}>
+                <div style={{ fontWeight: 900, marginBottom: 6 }}>See what you can study with your APS</div>
+                <div style={{ color: "var(--text-muted)" }}>
+                  Compare your score to common study pathways and qualification types.
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/tools/university-aps-requirements" style={{ textDecoration: "none", display: "block" }}>
+              <div className="card" style={{ padding: 14, borderRadius: 14, cursor: "pointer" }}>
+                <div style={{ fontWeight: 900, marginBottom: 6 }}>Check university APS requirements</div>
+                <div style={{ color: "var(--text-muted)" }}>
+                  Use UniHelp’s guide to compare typical APS expectations across study routes.
                 </div>
               </div>
             </Link>
@@ -689,19 +769,7 @@ export default function APSCalculatorPage() {
               <div className="card" style={{ padding: 14, borderRadius: 14, cursor: "pointer" }}>
                 <div style={{ fontWeight: 900, marginBottom: 6 }}>Check NSFAS help</div>
                 <div style={{ color: "var(--text-muted)" }}>
-                  Eligibility, documents, appeals, and what NSFAS covers.
-                </div>
-              </div>
-            </Link>
-
-            <Link
-              href="/matric/how-do-aps-points-work"
-              style={{ textDecoration: "none", display: "block" }}
-            >
-              <div className="card" style={{ padding: 14, borderRadius: 14, cursor: "pointer" }}>
-                <div style={{ fontWeight: 900, marginBottom: 6 }}>Learn how APS points work</div>
-                <div style={{ color: "var(--text-muted)" }}>
-                  See how marks convert to points and what universities usually count.
+                  Learn about eligibility, documents, appeals, and funding support.
                 </div>
               </div>
             </Link>

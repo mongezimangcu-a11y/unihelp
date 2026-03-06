@@ -86,6 +86,62 @@ export default function ArticleBody() {
         </ul>
       </div>
 
+      <div className="card">
+        <h2 style={{ marginTop: 0 }}>What is a graduate programme?</h2>
+        <p>
+          A graduate programme is usually a more structured opportunity designed
+          for recent graduates. It often includes formal training, rotations,
+          mentoring, and development over a longer period.
+        </p>
+        <p>
+          Graduate programmes are often aimed at students with completed degrees
+          who want a more organised start to their careers.
+        </p>
+      </div>
+
+      <div className="card">
+        <h2 style={{ marginTop: 0 }}>What is an internship?</h2>
+        <p>
+          An internship is usually shorter work experience for students or recent
+          graduates. It helps people gain exposure, practical skills, and
+          workplace experience.
+        </p>
+        <p>
+          Some internships are for final-year students, while others are for
+          people who have already completed their studies.
+        </p>
+      </div>
+
+      <div className="card">
+        <h2 style={{ marginTop: 0 }}>What is a learnership?</h2>
+        <p>
+          A learnership combines structured learning with practical work
+          experience. It often leads to a formal qualification and is usually
+          more training-focused than a standard internship.
+        </p>
+        <p>
+          Learnerships can be a strong option for students who want to build
+          skills while working toward recognised training outcomes.
+        </p>
+      </div>
+
+      <div className="card card--soft">
+        <h2 style={{ marginTop: 0 }}>Simple difference</h2>
+        <ul>
+          <li>
+            <strong>Graduate programme:</strong> structured development route
+            for graduates
+          </li>
+          <li>
+            <strong>Internship:</strong> shorter work experience opportunity
+          </li>
+          <li>
+            <strong>Learnership:</strong> training + work experience, often
+            linked to a formal qualification
+          </li>
+        </ul>
+      </div>
+
       <h2>Starter list</h2>
 
       <div>

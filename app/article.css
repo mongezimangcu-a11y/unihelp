@@ -1,76 +1,78 @@
-/* app/article.css */
-
-/* ---------------------------
+/* =========================
    Article layout
----------------------------- */
+========================= */
+
 .article {
-  max-width: var(--maxw);
+  max-width: 1100px;
   margin: 0 auto;
   padding: 18px 16px 0;
 }
 
-/* ---------------------------
+/* =========================
    Typography
----------------------------- */
+========================= */
+
 .article h1 {
   font-size: 40px;
   line-height: 1.05;
   letter-spacing: -0.03em;
   margin: 16px 0 12px;
+  color: var(--brand-dark);
 }
 
 .article h2 {
   font-size: 24px;
   margin: 28px 0 14px;
   letter-spacing: -0.01em;
+  color: var(--brand-dark);
 }
 
 .article h3 {
   font-size: 18px;
   margin: 18px 0 10px;
+  color: var(--brand-dark);
 }
 
 .article p {
   margin: 8px 0;
-  color: rgba(15, 23, 42, 0.85);
+  color: var(--text-muted);
+  line-height: 1.75;
 }
 
 .article .lede {
-  font-size: 16px;
-  color: var(--muted);
+  font-size: 17px;
+  color: var(--text-muted);
 }
 
-/* ---------------------------
+/* =========================
    Cards
----------------------------- */
+========================= */
+
 .card {
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.98),
-    rgba(255, 255, 255, 0.92)
-  );
-  box-shadow: var(--shadow);
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #ffffff, #fcfdff);
+  box-shadow: 0 10px 24px rgba(15, 35, 64, 0.05);
   padding: 18px 20px;
-  margin-bottom: 14px;
-  transition:
-    transform 0.12s ease,
-    box-shadow 0.12s ease,
-    border-color 0.12s ease;
+  margin-bottom: 16px;
 }
 
-/* ---------------------------
-   Article links as cards (clickable)
----------------------------- */
+.card--soft {
+  background: linear-gradient(135deg, #eef6ff, #f7fbea);
+}
+
+/* =========================
+   Article links as cards
+========================= */
+
 .article a.card {
   display: block;
   text-decoration: none;
   position: relative;
   overflow: hidden;
+  transition: all 0.18s ease;
 }
 
-/* Accent stripe */
 .article a.card::before {
   content: "";
   position: absolute;
@@ -78,11 +80,10 @@
   top: 0;
   bottom: 0;
   width: 4px;
-  background: linear-gradient(180deg, var(--brand), var(--accent));
-  opacity: 0.85;
+  background: linear-gradient(180deg, var(--brand-blue), var(--brand-green));
+  opacity: 0.95;
 }
 
-/* Arrow indicator */
 .article a.card::after {
   content: "→";
   position: absolute;
@@ -91,59 +92,49 @@
   transform: translateY(-50%);
   font-size: 22px;
   font-weight: 900;
-  color: rgba(15, 23, 42, 0.35);
+  color: rgba(15, 35, 64, 0.25);
   transition: transform 0.12s ease, color 0.12s ease;
 }
 
-/* Hover */
 .article a.card:hover {
-  text-decoration: none;
-}
-
-.article a.card:hover .card {
   transform: translateY(-2px);
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
-  border-color: rgba(14, 165, 233, 0.45);
+  box-shadow: 0 14px 28px rgba(13, 117, 223, 0.12);
 }
 
 .article a.card:hover::after {
   transform: translate(4px, -50%);
-  color: var(--brand);
+  color: var(--brand-blue);
 }
 
-/* ---------------------------
+/* =========================
    Card content
----------------------------- */
+========================= */
+
 .card-title {
   font-size: 18px;
   font-weight: 900;
   letter-spacing: -0.01em;
   margin: 0 0 6px;
-  color: var(--text);
+  color: var(--brand-dark);
 }
 
 .card-desc {
   margin: 0;
   font-size: 15px;
-  color: var(--muted);
+  color: var(--text-muted);
 }
 
-/* ---------------------------
-   Icons for section cards (CSS-only)
-   How to use:
-   - Wrap your card list in a div with one of these classes:
-     .section-tools | .section-matric | .section-nsfas
----------------------------- */
+/* =========================
+   Section icon wrappers
+========================= */
 
-/* Make space for icon */
 .section-tools a.card .card,
 .section-matric a.card .card,
 .section-nsfas a.card .card {
-  padding-left: 56px; /* space for the icon bubble */
+  padding-left: 56px;
   position: relative;
 }
 
-/* Icon bubble base */
 .section-tools a.card .card::before,
 .section-matric a.card .card::before,
 .section-nsfas a.card .card::before {
@@ -158,56 +149,44 @@
   place-items: center;
   font-size: 16px;
   font-weight: 900;
-  background: rgba(15, 23, 42, 0.04);
-  border: 1px solid rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(15, 35, 64, 0.08);
 }
 
-/* Tools icon */
 .section-tools a.card .card::before {
   content: "🧮";
-  background:
-    radial-gradient(90px 40px at 30% 0%, rgba(14, 165, 233, 0.22), transparent 60%),
-    rgba(15, 23, 42, 0.04);
+  background: linear-gradient(135deg, #e8f3ff, #f0fff3);
 }
 
-/* Matric icon */
 .section-matric a.card .card::before {
   content: "🎓";
-  background:
-    radial-gradient(90px 40px at 30% 0%, rgba(124, 58, 237, 0.20), transparent 60%),
-    rgba(15, 23, 42, 0.04);
+  background: linear-gradient(135deg, #eef6ff, #fff7df);
 }
 
-/* NSFAS icon */
 .section-nsfas a.card .card::before {
   content: "💰";
-  background:
-    radial-gradient(90px 40px at 30% 0%, rgba(34, 197, 94, 0.18), transparent 60%),
-    rgba(15, 23, 42, 0.04);
+  background: linear-gradient(135deg, #effbe5, #eef6ff);
 }
 
-/* Slight icon emphasis on hover */
-.section-tools a.card:hover .card::before,
-.section-matric a.card:hover .card::before,
-.section-nsfas a.card:hover .card::before {
-  border-color: rgba(14, 165, 233, 0.25);
-}
+/* =========================
+   Lists
+========================= */
 
-/* ---------------------------
-   Lists inside articles
----------------------------- */
 .article ul,
 .article ol {
   margin: 12px 0 12px 20px;
+  color: var(--text-muted);
 }
 
 .article li {
   margin: 6px 0;
 }
 
-/* Inline article links */
+/* =========================
+   Inline links
+========================= */
+
 .article p a {
-  color: var(--brand);
+  color: var(--brand-blue);
   font-weight: 700;
 }
 
@@ -216,26 +195,54 @@
   text-underline-offset: 3px;
 }
 
-/* ---------------------------
-   Buttons (kept for tools pages)
----------------------------- */
+/* =========================
+   Buttons
+========================= */
+
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 14px;
+  padding: 10px 16px;
   border-radius: 999px;
-  font-weight: 900;
+  font-weight: 800;
   text-decoration: none;
-  border: 1px solid rgba(14, 165, 233, 0.35);
-  background:
-    radial-gradient(220px 80px at 20% 0%, rgba(14, 165, 233, 0.30), transparent 55%),
-    radial-gradient(220px 80px at 80% 0%, rgba(124, 58, 237, 0.22), transparent 60%),
-    rgba(14, 165, 233, 0.08);
-  color: rgba(15, 23, 42, 0.92);
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, var(--brand-blue), var(--brand-green));
+  color: white;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 
 .button:hover {
   text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(13, 117, 223, 0.22);
+}
+
+.button--ghost {
+  background: #f8fbff;
+  color: var(--brand-dark);
+  border: 1px solid var(--border-soft);
+}
+
+.button--ghost:hover {
+  box-shadow: 0 8px 14px rgba(15, 35, 64, 0.06);
+}
+
+/* =========================
+   Callouts
+========================= */
+
+.callout {
+  border-left: 4px solid var(--brand-gold);
+  background: linear-gradient(135deg, #fff8df, #eef6ff);
+  padding: 12px 14px;
+  border-radius: 14px;
+  margin: 14px 0;
+  color: var(--brand-dark);
+}
+
+.callout strong {
+  color: var(--brand-dark);
 }

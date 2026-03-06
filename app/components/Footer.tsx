@@ -1,13 +1,16 @@
-// app/components/Footer.tsx
 import Link from "next/link";
 
 const links = [
   { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+  { href: "/faqs", label: "FAQs" },
   { href: "/disclaimer", label: "Disclaimer" },
   { href: "/matric", label: "Matric" },
   { href: "/nsfas", label: "NSFAS" },
   { href: "/tools", label: "Tools" },
-  { href: "/graduates", label: "Graduates" }, // ✅ NEW
+  { href: "/graduates", label: "Graduates" },
+  { href: "/careers", label: "Careers" },
+  { href: "/bursaries", label: "Bursaries" },
 ];
 
 export default function Footer() {
