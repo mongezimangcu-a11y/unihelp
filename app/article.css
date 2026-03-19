@@ -1,0 +1,248 @@
+/* =========================
+   Article layout
+========================= */
+
+.article {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px 16px 0;
+}
+
+/* =========================
+   Typography
+========================= */
+
+.article h1 {
+  font-size: 40px;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 16px 0 12px;
+  color: var(--brand-dark);
+}
+
+.article h2 {
+  font-size: 24px;
+  margin: 28px 0 14px;
+  letter-spacing: -0.01em;
+  color: var(--brand-dark);
+}
+
+.article h3 {
+  font-size: 18px;
+  margin: 18px 0 10px;
+  color: var(--brand-dark);
+}
+
+.article p {
+  margin: 8px 0;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+.article .lede {
+  font-size: 17px;
+  color: var(--text-muted);
+}
+
+/* =========================
+   Cards
+========================= */
+
+.card {
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #ffffff, #fcfdff);
+  box-shadow: 0 10px 24px rgba(15, 35, 64, 0.05);
+  padding: 18px 20px;
+  margin-bottom: 16px;
+}
+
+.card--soft {
+  background: linear-gradient(135deg, #eef6ff, #f7fbea);
+}
+
+/* =========================
+   Article links as cards
+========================= */
+
+.article a.card {
+  display: block;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.18s ease;
+}
+
+.article a.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--brand-blue), var(--brand-green));
+  opacity: 0.95;
+}
+
+.article a.card::after {
+  content: "→";
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;
+  font-weight: 900;
+  color: rgba(15, 35, 64, 0.25);
+  transition: transform 0.12s ease, color 0.12s ease;
+}
+
+.article a.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(13, 117, 223, 0.12);
+}
+
+.article a.card:hover::after {
+  transform: translate(4px, -50%);
+  color: var(--brand-blue);
+}
+
+/* =========================
+   Card content
+========================= */
+
+.card-title {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  margin: 0 0 6px;
+  color: var(--brand-dark);
+}
+
+.card-desc {
+  margin: 0;
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+/* =========================
+   Section icon wrappers
+========================= */
+
+.section-tools a.card .card,
+.section-matric a.card .card,
+.section-nsfas a.card .card {
+  padding-left: 56px;
+  position: relative;
+}
+
+.section-tools a.card .card::before,
+.section-matric a.card .card::before,
+.section-nsfas a.card .card::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  font-weight: 900;
+  border: 1px solid rgba(15, 35, 64, 0.08);
+}
+
+.section-tools a.card .card::before {
+  content: "🧮";
+  background: linear-gradient(135deg, #e8f3ff, #f0fff3);
+}
+
+.section-matric a.card .card::before {
+  content: "🎓";
+  background: linear-gradient(135deg, #eef6ff, #fff7df);
+}
+
+.section-nsfas a.card .card::before {
+  content: "💰";
+  background: linear-gradient(135deg, #effbe5, #eef6ff);
+}
+
+/* =========================
+   Lists
+========================= */
+
+.article ul,
+.article ol {
+  margin: 12px 0 12px 20px;
+  color: var(--text-muted);
+}
+
+.article li {
+  margin: 6px 0;
+}
+
+/* =========================
+   Inline links
+========================= */
+
+.article p a {
+  color: var(--brand-blue);
+  font-weight: 700;
+}
+
+.article p a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* =========================
+   Buttons
+========================= */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, var(--brand-blue), var(--brand-green));
+  color: white;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.button:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(13, 117, 223, 0.22);
+}
+
+.button--ghost {
+  background: #f8fbff;
+  color: var(--brand-dark);
+  border: 1px solid var(--border-soft);
+}
+
+.button--ghost:hover {
+  box-shadow: 0 8px 14px rgba(15, 35, 64, 0.06);
+}
+
+/* =========================
+   Callouts
+========================= */
+
+.callout {
+  border-left: 4px solid var(--brand-gold);
+  background: linear-gradient(135deg, #fff8df, #eef6ff);
+  padding: 12px 14px;
+  border-radius: 14px;
+  margin: 14px 0;
+  color: var(--brand-dark);
+}
+
+.callout strong {
+  color: var(--brand-dark);
+}

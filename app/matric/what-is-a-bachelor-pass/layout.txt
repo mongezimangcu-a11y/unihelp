@@ -1,0 +1,12 @@
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
+
+export const metadata: Metadata = {
+  title: "What is a bachelor pass in South Africa? | UniHelp",
+  description:
+    "Learn what a bachelor pass is in South Africa, the minimum requirements, how it compares to diploma and higher certificate passes, and your study options.",
+};
+
+export default function Layout({ children }: { children: ReactNode }) {
+  return <>{children}</>;
+}
